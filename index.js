@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
-require('dotenv').config()
+require("dotenv").config();
 
-const blogName = "rockyourcode";
-const jsonEndpoint = "https://www.rockyourcode.com/index.json";
 const blogPostLimit = 1;
+
+const BLOG_NAME = process.env.BLOG_NAME;
 const BUTTONDOWN_EMAIL_TOKEN = process.env.BUTTONDOWN_EMAIL_TOKEN;
+const EMAIL = process.env.EMAIL;
+const JSON_ENDPOINT = process.env.JSON_ENDPOINT;
+const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 
 async function fetchJSONItems(jsonEndpoint) {
   try {
@@ -42,7 +45,7 @@ async function postDraft(draft) {
 }
 
 async function getPosts() {
-  const items = await fetchJSONItems(jsonEndpoint);
+  const items = await fetchJSONItems(JSON_ENDPOINT);
   let posts = "";
   items.slice(0, blogPostLimit).forEach((item) => {
     posts += `
@@ -63,7 +66,7 @@ async function getPosts() {
   <p>Hello 👋! Thanks for subscribing.</p>
   ${posts}
   <p>Thank you for reading my blog posts.</p>
-  <p>Don't hesitate to reach out via <a href="mailto:hi@rockyourcode.com">email</a> or <a href="https://twitter.com/hisophiabrandt">Twitter</a>!
+  <p>Don't hesitate to reach out via <a href="mailto:${EMAIL}">email</a> or <a href="https://twitter.com/${TWITTER_HANDLE}">Twitter</a>!
   `,
   };
 }
@@ -77,7 +80,7 @@ async function getPosts() {
   }
 
   const draft = {
-    subject: `${blogName}:${blogPosts.titles}`,
+    subject: `${BLOG_NAME}:${blogPosts.titles}`,
     body: blogPosts.content,
   };
   try {
