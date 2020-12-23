@@ -20,6 +20,11 @@ I've created this script for my personal use, but feel free to fork it and make 
 
 ## Usage
 
+The script creates a new draft for buttondown.email.  
+Go to [https://buttondown.email/emails/drafts](https://buttondown.email/emails/drafts) to edit your draft and send it to your newsletter subscribers.
+
+The script **does not** send emails automatically because I prefer to have a final quality control pass.
+
 1. Fork the repository and clone it to your computer if you want to modify it.
 
 2. [Create encrypted secrets for your repository](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets):
