@@ -49,7 +49,7 @@ async function getPosts() {
   let posts = "";
   items.slice(0, blogPostLimit).forEach((item) => {
     posts += `
-  <h3><a href=${item.url}>${item.title}</a></h3>
+  <h2><a href=${item.url}>${item.title}</a></h2>
   <p>Published on: ${item.date_published}</p>
   <p>tags: ${item.tags}</p>
   ${item.content_html}
