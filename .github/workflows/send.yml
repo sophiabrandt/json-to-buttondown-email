@@ -1,4 +1,4 @@
-name: Send email
+name: Fetch blog posts and send draft
 
 on:
   push:
@@ -31,9 +31,18 @@ jobs:
         echo EMAIL=${{ secrets.EMAIL }} >> .env
         echo JSON_ENDPOINT=${{ secrets.JSON_ENDPOINT }} >> .env
         echo TWITTER_HANDLE=${{ secrets.TWITTER_HANDLE }} >> .env
-    - name: Send Email
+    - name: Fetch JSON
       run: |-
-        npm start
+        npm run fetch
+        cat posts.json
+    - name: Commit, push and send draft if changed
+      run: |-
+        git add .
+        git diff
+        git config --global user.email "github-action-bot@example.com"
+        git config --global user.name "GitHub Action Bot"
+        git commit -m "Update draft" -a && npm run send || echo "No changes to commit"
+        git push
     - name: Delete env file
       run: |
         rm .env

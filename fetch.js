@@ -1,10 +1,11 @@
 const fetch = require("node-fetch");
+const fs = require("fs");
+
 require("dotenv").config();
 
 const blogPostLimit = 1;
 
 const BLOG_NAME = process.env.BLOG_NAME;
-const BUTTONDOWN_EMAIL_TOKEN = process.env.BUTTONDOWN_EMAIL_TOKEN;
 const EMAIL = process.env.EMAIL;
 const JSON_ENDPOINT = process.env.JSON_ENDPOINT;
 const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
@@ -15,27 +16,6 @@ async function fetchJSONItems(jsonEndpoint) {
     const data = await response.json();
     if (response.ok) {
       return data.items;
-    } else {
-      return Promise.reject(data);
-    }
-  } catch (err) {
-    return Promise.reject(err);
-  }
-}
-
-async function postDraft(draft) {
-  try {
-    const response = await fetch("https://api.buttondown.email/v1/drafts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${BUTTONDOWN_EMAIL_TOKEN}`,
-      },
-      body: JSON.stringify(draft),
-    });
-    const data = response.json();
-    if (response.ok) {
-      return data;
     } else {
       return Promise.reject(data);
     }
@@ -72,20 +52,17 @@ async function getPosts() {
 }
 
 (async () => {
-  let blogPosts = "";
+  let blogPosts = {};
   try {
     blogPosts = await getPosts();
   } catch (err) {
     console.log("Failed to load blog posts: ", err);
   }
 
-  const draft = {
-    subject: `${BLOG_NAME}:${blogPosts.titles}`,
-    body: blogPosts.content,
-  };
-  try {
-    const response = await postDraft(draft);
-  } catch (err) {
-    console.log("Failed to post draft", err);
-  }
+  // write to file so that we can diff it in Github actions
+  blogPostsString = JSON.stringify(blogPosts);
+  fs.writeFile("posts.json", blogPostsString, function (err) {
+    if (err) return console.log(err);
+    console.log(`${blogPostsString} > posts.json`);
+  });
 })();
