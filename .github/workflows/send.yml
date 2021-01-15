@@ -34,14 +34,13 @@ jobs:
     - name: Fetch JSON
       run: |-
         npm run fetch
-        cat posts.json
     - name: Commit, push and send draft if changed
       run: |-
         git add .
         git diff
         git config --global user.email "github-action-bot@example.com"
         git config --global user.name "GitHub Action Bot"
-        git commit -m "Update draft" -a && npm run send || echo "No changes to commit"
+        git commit -m "Send to buttondown.email" -a && npm run send || echo "No changes"
         git push
     - name: Delete env file
       run: |
