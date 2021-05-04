@@ -28,12 +28,11 @@ async function getPosts() {
   const items = await fetchJSONItems(JSON_ENDPOINT);
   let posts = "";
   items.slice(0, blogPostLimit).forEach((item) => {
-    posts += `
-  <h2><a href=${item.url}>${item.title}</a></h2>
-  <p>Published on: ${item.date_published}</p>
-  <p>tags: ${item.tags}</p>
-  ${item.content_html}
-  <hr />`;
+    posts += `## [${item.title}](${item.url}})
+Published on: ${item.date_published}\n
+tags: ${item.tags}\n
+${item.content}\n
+<hr />`;
   });
 
   const titles = items.slice(0, blogPostLimit).map((item) => {
@@ -42,12 +41,11 @@ async function getPosts() {
 
   return {
     titles: titles,
-    content: `
-  <p>Hello 👋! Thanks for subscribing.</p>
-  ${posts}
-  <p>Thank you for reading my blog posts.</p>
-  <p>Don't hesitate to reach out via <a href="mailto:${EMAIL}">email</a> or <a href="https://twitter.com/${TWITTER_HANDLE}">Twitter</a>!
-  `,
+    content: `Hello 👋! Thanks for subscribing.\n
+${posts}
+Thank you for reading my blog posts.\n
+Don't hesitate to reach out via [email](mailto:${EMAIL}") or [Twitter](https://twitter.com/${TWITTER_HANDLE})!
+`,
   };
 }
 
