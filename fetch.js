@@ -3,8 +3,7 @@ const fs = require("fs");
 
 require("dotenv").config();
 
-const blogPostLimit = 1;
-
+const POST_LIMIT = process.env.POST_LIMIT ?? 1;
 const BLOG_NAME = process.env.BLOG_NAME;
 const EMAIL = process.env.EMAIL;
 const JSON_ENDPOINT = process.env.JSON_ENDPOINT;
@@ -27,7 +26,7 @@ async function fetchJSONItems(jsonEndpoint) {
 async function getPosts() {
   const items = await fetchJSONItems(JSON_ENDPOINT);
   let posts = "";
-  items.slice(0, blogPostLimit).forEach((item) => {
+  items.slice(0, POST_LIMIT).forEach((item) => {
     posts += `## [${item.title}](${item.url}})
 Published on: ${item.date_published}\n
 tags: ${item.tags}\n
@@ -35,7 +34,7 @@ ${item.content}\n
 <hr />`;
   });
 
-  const titles = items.slice(0, blogPostLimit).map((item) => {
+  const titles = items.slice(0, POST_LIMIT).map((item) => {
     return " " + item.title;
   });
 

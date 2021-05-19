@@ -1,4 +1,4 @@
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![MIT License](https://img.shields.io/github/license/sophiabrandt/json-to-buttondown-email.svg)](https://github.com/sophiabrandt/json-to-buttondown-email/blob/master/LICENSE)
 
 # json-to-buttondown-email (WIP)
@@ -31,6 +31,7 @@ The script **does not** send emails automatically. You can change the [Buttondow
 
 2. [Create encrypted secrets for your repository](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets):
 
+- POST_LIMIT (number of posts to fetch from your blog)
 - BLOG_NAME
 - BUTTONDOWN_EMAIL_TOKEN (this is the access token from buttondown.email)
 - EMAIL
@@ -39,7 +40,7 @@ The script **does not** send emails automatically. You can change the [Buttondow
 
 _Note:_ We want to keep the buttondown access token secret.
 
-3. The script runs every day at 19:05 UTC. You can specify a different interval. Adjust [.github/workflows/send.yml](.github/workflows/send.yml):
+3. The script runs every Monday at 19:05 UTC. You can specify a different interval. Adjust [.github/workflows/send.yml](.github/workflows/send.yml):
 
 ```yaml
 on:
