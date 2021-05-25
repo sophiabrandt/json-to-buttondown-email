@@ -27,11 +27,11 @@ async function getPosts() {
   const items = await fetchJSONItems(JSON_ENDPOINT);
   let posts = "";
   items.slice(0, POST_LIMIT).forEach((item) => {
-    posts += `## [${item.title}](${item.url}})
+    posts += `## [${item.title}](${item.url})
 Published on: ${item.date_published}\n
 tags: ${item.tags}\n
 ${item.content}\n
-<hr />`;
+<hr />\n`;
   });
 
   const titles = items.slice(0, POST_LIMIT).map((item) => {
