@@ -40,9 +40,10 @@ ${item.content}\n
 
   return {
     titles: titles,
-    content: `Hello 👋! Thanks for subscribing.\n
+    content: `Hello 👋! Thanks for subscribing.\n\n
+Here are the articles from last week:\n
 ${posts}
-Thank you for reading my blog posts.\n
+Thank you for reading my blog.\n
 Don't hesitate to reach out via [email](mailto:${EMAIL}") or [Twitter](https://twitter.com/${TWITTER_HANDLE})!
 `,
   };
