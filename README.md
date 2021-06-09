@@ -1,7 +1,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![MIT License](https://img.shields.io/github/license/sophiabrandt/json-to-buttondown-email.svg)](https://github.com/sophiabrandt/json-to-buttondown-email/blob/master/LICENSE)
 
-# json-to-buttondown-email (WIP)
+# json-to-buttondown-email
 
 **json-to-buttondown-email** is a Node.js script to send newsletter drafts from a JSON API to [buttondown.email][buttondown].
 
@@ -48,7 +48,7 @@ on:
   workflow_dispatch:
   schedule:
     # Change the line below, see https://crontab.guru/ for help
-    - cron: "5 19 * * *"
+    - cron: "5 19 * * 1"
 ```
 
 4. The script creates a newsletter from the latest blog post. The value is hard-coded in [fetch.js](fetch.js) as the `blogPostLimit`.
