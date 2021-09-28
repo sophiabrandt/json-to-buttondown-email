@@ -28,6 +28,7 @@ async function getPosts() {
   let posts = "";
   items.slice(0, POST_LIMIT).forEach((item) => {
     posts += `## [${item.title}](${item.url})
+
 Published on: ${item.date_published}\n
 tags: ${item.tags}\n
 ${item.content}\n
