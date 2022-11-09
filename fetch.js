@@ -7,7 +7,7 @@ const POST_LIMIT = process.env.POST_LIMIT ?? 1;
 const BLOG_NAME = process.env.BLOG_NAME;
 const EMAIL = process.env.EMAIL;
 const JSON_ENDPOINT = process.env.JSON_ENDPOINT;
-const TWITTER_HANDLE = process.env.TWITTER_HANDLE;
+const MASTODON_URL = process.env.MASTODON_URL;
 
 async function fetchJSONItems(jsonEndpoint) {
   try {
@@ -45,7 +45,7 @@ ${item.content}\n
 Here are my latest articles:\n
 ${posts}
 Thank you for reading my blog.\n
-Don't hesitate to reach out via [email](mailto:${EMAIL}") or [Twitter](https://twitter.com/${TWITTER_HANDLE})!
+Don't hesitate to reach out via [email](mailto:${EMAIL}") or [Mastodon](${MASTODON_URL})!
 `,
   };
 }
