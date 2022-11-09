@@ -36,7 +36,7 @@ The script **does not** send emails automatically. You can change the [Buttondow
 - BUTTONDOWN_EMAIL_TOKEN (this is the access token from buttondown.email)
 - EMAIL
 - JSON_ENDPOINT
-- TWITTER_HANDLE
+- MASTODON_URL
 
 _Note:_ We want to keep the buttondown access token secret.
 
