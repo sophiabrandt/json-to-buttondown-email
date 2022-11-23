@@ -9,13 +9,14 @@ const BUTTONDOWN_EMAIL_TOKEN = process.env.BUTTONDOWN_EMAIL_TOKEN;
 
 async function postDraft(draft) {
   try {
-    const response = await fetch("https://api.buttondown.email/v1/drafts", {
+    const response = await fetch("https://api.buttondown.email/v1/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${BUTTONDOWN_EMAIL_TOKEN}`,
       },
       body: JSON.stringify(draft),
+      status: "draft",
     });
     const data = response.json();
     if (response.ok) {
