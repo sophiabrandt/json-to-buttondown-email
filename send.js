@@ -15,8 +15,7 @@ async function postDraft(draft) {
         "Content-Type": "application/json",
         Authorization: `Token ${BUTTONDOWN_EMAIL_TOKEN}`,
       },
-      body: JSON.stringify(draft),
-      status: "draft",
+      body: JSON.stringify({ status: "draft", body: draft }),
     });
     const data = await response.json();
     if (response.ok) {
