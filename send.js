@@ -18,7 +18,7 @@ async function postDraft(draft) {
       body: JSON.stringify(draft),
       status: "draft",
     });
-    const data = response.json();
+    const data = await response.json();
     if (response.ok) {
       return data;
     } else {

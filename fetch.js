@@ -4,7 +4,6 @@ const fs = require("fs");
 require("dotenv").config();
 
 const POST_LIMIT = process.env.POST_LIMIT ?? 1;
-const BLOG_NAME = process.env.BLOG_NAME;
 const EMAIL = process.env.EMAIL;
 const JSON_ENDPOINT = process.env.JSON_ENDPOINT;
 const MASTODON_URL = process.env.MASTODON_URL;
