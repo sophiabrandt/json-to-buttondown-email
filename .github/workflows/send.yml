@@ -31,7 +31,7 @@ jobs:
         echo EMAIL=${{ secrets.EMAIL }} >> .env
         echo JSON_ENDPOINT=${{ secrets.JSON_ENDPOINT }} >> .env
         echo POST_LIMIT=${{ secrets.POST_LIMIT }} >> .env
-        echo TWITTER_HANDLE=${{ secrets.TWITTER_HANDLE }} >> .env
+        echo MASTODON_URL=${{ secrets.MASTODON_URL }} >> .env
     - name: Fetch JSON
       run: |-
         npm run fetch
