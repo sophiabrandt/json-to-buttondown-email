@@ -44,7 +44,7 @@ ${item.content}\n
 Here are my latest articles:\n
 ${posts}
 Thank you for reading my blog.\n
-Don't hesitate to reach out via [email](mailto:${EMAIL}") or [Mastodon](${MASTODON_URL})!
+Don't hesitate to reach out via [email](mailto:${EMAIL}) or [Mastodon](${MASTODON_URL})!
 `,
   };
 }
